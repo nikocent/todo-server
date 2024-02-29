@@ -17,4 +17,10 @@ public class Todo {
     private String tid;
     private String title;
     private Boolean checked;
+    public Todo(String tid, String title, Boolean checked) {
+        this.tid = tid;
+        this.title = title;
+        this.checked = false;
+    }
+
 }

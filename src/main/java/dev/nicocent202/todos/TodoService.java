@@ -7,8 +7,11 @@ import java.util.List;
 public class TodoService {
     @Autowired
     private TodoRepository todoRepository;
-    public List<Todo> getAllTodos() {
+    public List<Todo> allTodos() {
         return todoRepository.findAll();
     }
-
+    public Todo createTodo(String tid, String title, Boolean checked) {
+        Todo todo = new Todo(tid, title, checked);
+        return todoRepository.save(todo);
+    }
 }
