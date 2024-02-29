@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,5 +25,15 @@ public class TodoController {
         String title = (String) dataObject.get("title");
         Boolean checked = (Boolean) dataObject.get("checked");
         return new ResponseEntity<Todo>(todoService.createTodo(tid, title, checked), HttpStatus.CREATED);
+    }
+    @DeleteMapping("/{tid}")
+    public ResponseEntity<HttpStatus> deleteTodo(@PathVariable String tid) {
+        todoService.deleteTodoByTid(tid);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PutMapping("/{tid}")
+    public ResponseEntity<Todo> updateTodo (@PathVariable String tid, @RequestBody HashMap<String, Object> dataObject){
+        return new ResponseEntity<Todo>(todoService.updateTodoByTid(tid, (Boolean) dataObject.get("checked")), HttpStatus.OK);
     }
 }
