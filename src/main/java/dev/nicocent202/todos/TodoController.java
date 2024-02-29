@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/todos")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://todo-client123321.netlify.app/")
 public class TodoController {
     @Autowired
     private TodoService todoService;
